@@ -1,0 +1,10 @@
+{
+  "presets": [
+    "env",
+    "react"
+  ],
+  "plugins": [
+    "transform-class-properties",  // this will help to use arrow function in eventHandler in Indecision.js, getting rid of binding and writing 'state' except 'this.state'
+    "transform-object-rest-spread"  // it will allow to use spread operator syntax
+  ]
+}
