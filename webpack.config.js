@@ -22,7 +22,7 @@ module.exports = (env) => {
             {
               loader: 'css-loader',
               options: {
-                sourceMap: true
+                sourceMap: true // will give sourceMappingURL(you can see by selecting any element in devtool and see it's styles, it would show you something like abc.css)
               }
             },
             {
