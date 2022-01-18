@@ -4,7 +4,7 @@ import database from '../firebase/firebase'
 export const addExpense = (expense) => ({
   type: 'ADD_EXPENSE',
   expense
-}) 
+})
 
 export const startAddExpense = (expenseData = {}) => {
   return (dispatch) => {
@@ -14,7 +14,7 @@ export const startAddExpense = (expenseData = {}) => {
     return database.ref('expenses').push(expense).then((ref) => {
       dispatch(addExpense({ // here we access to diapatch cause we have performed startAddExpense(which has access to dispatch)
         id: ref.key,
-        ...expense 
+        ...expense
       }))
     })
   }
@@ -23,10 +23,30 @@ export const startAddExpense = (expenseData = {}) => {
 export const removeExpense = ({ id } = {}) => ({
   type: 'REMOVE_EXPENSE',
   id
-}) 
+})
 
 export const editExpense = (id, updates) => ({
   type: 'EDIT_EXPENSE',
   id,
   updates
-}) 
+})
+
+export const setExpenses = (expenses) => ({
+  type: 'SET_EXPENSES',
+  expenses
+})
+
+export const startSetExpenses = () => {
+  return (dispatch) => {
+    return database.ref('expenses').once('value').then((snapshot) => {
+      const expenses = []
+      snapshot.forEach((childSnapshot) => {
+        expenses.push({
+          id: childSnapshot.key,
+          ...childSnapshot.val()
+        })
+      })
+      dispatch(setExpenses(expenses))
+    })
+  }
+}
