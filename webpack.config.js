@@ -12,7 +12,7 @@ else if (process.env.NODE_ENV === 'development') {
 }
 
 module.exports = (env) => {
-  const CSSExtract = new ExtractTextPlugin('style.css')
+  const CSSExtract = new ExtractTextPlugin('style.css') // extracts css to 'style.css'
   const isProduction = env === 'production'
   return {
     entry: './src/app.js',
@@ -48,7 +48,7 @@ module.exports = (env) => {
     plugins: [
       CSSExtract,
       new webpack.DefinePlugin({
-        'process.env.FIREBASE_API_KEY': JSON.stringify(process.env.FIREBASE_API_KEY),
+        'process.env.FIREBASE_API_KEY': JSON.stringify(process.env.FIREBASE_API_KEY), // this will set 'process.env.FIREBASE_API_KEY' to actual key in firebase.js cause we do not directly set those value here to make it secure excluding .env files.
         'process.env.FIREBASE_AUTH_DOMAIN': JSON.stringify(process.env.FIREBASE_AUTH_DOMAIN),
         'process.env.FIREBASE_DATABASE_URL': JSON.stringify(process.env.FIREBASE_DATABASE_URL),
         'process.env.FIREBASE_PROJECT_ID': JSON.stringify(process.env.FIREBASE_PROJECT_ID),
@@ -62,7 +62,7 @@ module.exports = (env) => {
     devServer: {
       contentBase: path.join(__dirname, 'public'),  // to serve 'index.html' file
       historyApiFallback: true,
-      publicPath: '/dist/'
+      publicPath: '/dist/'  // tells which .js file to serve for 'index.html' file
     }
   }
 }

@@ -3,7 +3,8 @@ import moment from 'moment'
 import { SingleDatePicker } from 'react-dates'
 
 export default class ExpenseForm extends React.Component {
-  constructor(props) {
+  constructor(props) {  // to get access of props(which we get by default), we write like this
+    // console.log('props: ', props)
     super(props)
 
     this.state = {
