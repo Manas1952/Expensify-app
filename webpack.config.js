@@ -12,10 +12,10 @@ else if (process.env.NODE_ENV === 'development') {
 }
 
 module.exports = (env) => {
-  const CSSExtract = new ExtractTextPlugin('style.css') // extracts css to 'style.css'
+  const CSSExtract = new ExtractTextPlugin('styles.css') // extracts css to 'styles.css'
   const isProduction = env === 'production'
   return {
-    entry: './src/app.js',
+    entry: ['babel-polyfill', './src/app.js'],  // here first element in array(babel-polyfill) would support new features (like [].includes('manas) which are not tranpiled by babel; next element would be entry point)
     output: {
       path: path.join(__dirname, 'public', 'dist'),
       filename: 'bundle.js'
