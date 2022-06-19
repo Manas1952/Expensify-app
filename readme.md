@@ -10,6 +10,6 @@ I have already deployed this Expense-Manager on **Heroku**
 
 To visit Expense-Manager App [Click here](https://expensify-publish-ho-ja.herokuapp.com/).
 
-###### Contributors
+#### Contributors
 
 > Manas Purohit
